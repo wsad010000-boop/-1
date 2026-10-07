@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จำลองออกแบบกระทงดิจิทัล</title>
+    <style>
+        /* ส่วนตกแต่งหน้าตาด้วย CSS ให้ดู ใช้งานง่ายบนมือถือ */
+        body {
+            font-family: sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        /* พื้นที่แสดงตัวอย่างกระทง (Preview) */
+        #krathong-preview {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #10b981; /* สีเริ่มต้น */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            transition: 0.3s;
+        }
+        .control-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        button, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .color-btns {
+            display: flex;
+            gap: 10px;
+        }
+        .color-btn {
+            flex: 1;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        #btn-float {
+            background-color: #f59e0b;
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>กระทงดิจิทัลของฉัน</h2>
+        
+        <!-- ตัวอย่างกระทงจำลอง -->
+        <div id="krathong-preview">😍</div>
+
+        <!-- ควบคุมเปลี่ยนสีกลีบกระทง -->
+        <div class="control-group">
+            <label>เลือกสีฐานกระทง:</label>
+            <div class="color-btns">
+                <button class="color-btn" style="background: #10b981;" onclick="changeColor('#10b981')"></button>
+                <button class="color-btn" style="background: #3b82f6;" onclick="changeColor('#3b82f6')"></button>
+                <button class="color-btn" style="background: #ec4899;" onclick="changeColor('#ec4899')"></button>
+            </div>
+        </div>
+
+        <!-- ควบคุมเลือกอีโมจิ -->
+        <div class="control-group">
+            <label>เลือกไอคอนตรงกลาง:</label>
+            <select id="emoji-select" onchange="changeEmoji()">
+                <option value="😍">หน้าหลงรัก (😍)</option>
+                <option value="🙏">ไหว้พระ (🙏)</option>
+                <option value="🌸">ดอกไม้ (🌸)</option>
+                <option value="✨">ประกายไฟ (✨)</option>
+            </select>
+        </div>
+
+        <!-- ปุ่มกดลอย -->
+        <button id="btn-float" onclick="floatAction()">ลอยกระทง!</button>
+    </div>
+
+    <script>
+        // ส่วนควบคุมการทำงานด้วย JavaScript ง่ายๆ
+        function changeColor(colorCode) {
+            document.getElementById('krathong-preview').style.backgroundColor = colorCode;
+        }
+
+        function changeEmoji() {
+            let selected = document.getElementById('emoji-select').value;
+            document.getElementById('krathong-preview').innerText = selected;
+        }
+
+        function floatAction() {
+            alert("เย้! กระทงของคุณถูกส่งไปลอยในระบบเรียบร้อยแล้ว");
+        }
+    </script>
+
+</body>
+</html>
